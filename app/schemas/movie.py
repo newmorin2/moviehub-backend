@@ -1,23 +1,16 @@
 from pydantic import BaseModel
 
-
-class MovieCreate(BaseModel):
+class MovieBase(BaseModel):
     title: str
     genre: str
+    duration: str
+    poster: str
     description: str
-    release_year: int
-    rating: float
 
+class MovieCreate(MovieBase):
+    pass
 
-class MovieUpdate(BaseModel):
-    title: str | None = None
-    genre: str | None = None
-    description: str | None = None
-    release_year: int | None = None
-    rating: float | None = None
-
-
-class MovieResponse(MovieCreate):
+class MovieOut(MovieBase):
     id: int
 
     class Config:

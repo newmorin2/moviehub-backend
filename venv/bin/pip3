@@ -1,4 +1,4 @@
-#!/home/lysa-omondi/moviehub-backend/venv/bin/python3
+#!/home/n3wton/Documents/moviehub-backend/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
