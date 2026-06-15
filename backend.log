@@ -1,0 +1,8 @@
+nohup: ignoring input
+
+> backend-frontend@0.1.0 start
+> node server.js
+
+Warning: Failed to connect to MongoDB connect ECONNREFUSED 127.0.0.1:27017
+Continuing without DB connection — some endpoints may fail.
+Server running on 0.0.0.0:3000 (DB connected: false)
