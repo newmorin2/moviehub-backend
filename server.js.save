@@ -1,0 +1,74 @@
+ npm install --no-audit --no-fund
+ npm install --no-audit --no-fund
+ npm install --no-audit --no-fund
+ npm install --no-audit --no-fund
+ sudo docker compose build backend && sudo docker compose up -d backend
+ sudo docker compose build backend && sudo docker compose up -d backend
+ sudo docker compose build backend
+ sudo docker run --rm -d -p 3000:3000 -v "$PWD":/app -w /app node:20-alpine sh -c "npm install --no-audit --no-fund && node server.js"
+ sudo docker compose build backend && sudo docker compose up -d backend
+ sudo docker compose ps
+ sudo docker compose logs backend --tail=200
+ curl -I http://localhost:3000/
+ sudo docker compose build backend
+ sudo docker compose up -d backend
+ sudo docker compose ps
+ sudo docker compose logs backend --tail=200
+ curl -I http://localhost:3000/
+
+ sudo docker compose build backend
+ sudo docker compose up -d backend
+ sudo docker compose ps
+ sudo docker compose logs backend --tail=200
+ curl -I http://localhost:3000/
+ npm install --no-audit --no-fund
+ npm install --no-audit --no-fund
+ node -v && npm -v
+ sudo docker compose build backend
+ sudo docker compose up -d backend
+ sudo docker compose ps
+ sudo docker compose logs backend --tail=200
+ curl -I http://localhost:3000/
+ node --version && npm --version
+ npm install --no-audit --no-fund
+ node server.js &
+ docker compose ps
+ docker compose logs backend --tail=200
+ curl -i http://localhost:3000/
+ sudo docker compose build backend && sudo docker compose up -d backend
+ sudo docker compose ps
+ sudo docker compose logs backend --tail=200
+ curl -i http://localhost:3000/
+ sudo docker compose ps
+ sudo docker compose logs backend --tail=200
+ sudo docker compose up -d --build backend
+ sudo docker compose ps && sudo docker compose logs backend --tail=200 && curl -i http://localhost:3000/
+ node -v && npm -v
+ npm install --no-audit --no-fund
+ nohup node server.js > server.log 2>&1 & echo $!
+ sleep 1; tail -n +1 server.log | sed -n '1,200p'
+ curl -i http://localhost:3000/
+ lsof -nP -iTCP:3000 -sTCP:LISTEN || true
+ lsof -t -iTCP:3000 -sTCP:LISTEN || true
+ sudo lsof -t -iTCP:3000 -sTCP:LISTEN | xargs -r sudo kill -9 || true
+ sed -n '1,240p' server.js || true
+ npm install --no-audit --no-fund
+ nohup node server.js > server.log 2>&1 & echo $!
+ sleep 1; tail -n 200 server.log || true
+ curl -i http://localhost:3000/api/bookings/demo || true
+ pkill -f vite || true; npm run dev -- --host &
+ pid=$(lsof -t -iTCP:3000 -sTCP:LISTEN 2>/dev/null || true)
+if [ -z "$pid" ]; then echo "NO_LISTENER"; else echo "PID:$pid"; ps -p $pid -o pid,comm,cmd --no-headers; fi
+if [ -n "$pid" ]; then comm=$(ps -p $pid -o comm=); echo "PROCESS_NAME:$comm"; if [ "$comm" != "node" ] && [ "$comm" != "nodejs" ]; then echo "Killing pid $pid ($comm)"; kill $pid || kill -9 $pid || true; sleep 1; else echo "Listener is node; leaving it"; fi; fi
+# Start server.js if present
+if [ -f server.js ]; then echo "Starting node server.js in background (logs -> backend.log)"; nohup node server.js > backend.log 2>&1 & sleep 1; else echo "server.js not found in $(pwd)"; fi
+sleep 1
+echo "--- HEADERS ---"
+curl -I -sS http://localhost:3000/api/bookings/demo || true
+
+echo "--- BODY ---"
+curl -sS http://localhost:3000/api/bookings/demo || true
+
+echo "--- backend.log (tail 40) ---"
+tail -n 40 backend.log || true
+
