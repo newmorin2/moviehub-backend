@@ -21,3 +21,18 @@ def delete_movie(movie_id: int):
     db.commit()
 
     return True
+
+
+def create_movie(movie_data: dict):
+    db = SessionLocal()
+    movie = Movie(
+        title=movie_data.get("title"),
+        genre=movie_data.get("genre"),
+        duration=movie_data.get("duration"),
+        poster=movie_data.get("poster"),
+        description=movie_data.get("description"),
+    )
+    db.add(movie)
+    db.commit()
+    db.refresh(movie)
+    return movie
